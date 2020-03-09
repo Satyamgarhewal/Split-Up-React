@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import configureStore from '../src/app/store/configureStore';
 import { Provider } from 'react-redux';
-
+import bootstrap from 'bootstrap/dist/css/bootstrap.css';
 document.title = 'Split-Up';
 const store = configureStore();
 store.subscribe(() => {

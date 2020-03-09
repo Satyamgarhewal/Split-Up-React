@@ -4,18 +4,33 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  padding-bottom: 50px;
+  border-bottom: 2px solid rgb(202, 200, 200);
+  background-color: #fbeeca;
 }
 
+ul:hover {
+  background-color: white;
+}
 li {
-  font-size: 20;
+  border-top: 2px solid;
+  font-size: 18px;
   margin-top: 20px;
   border-top: 2px;
   display: inline-block;
   text-align: center;
-  padding: 12px 16px;
+  padding: 8px 16px;
   text-decoration: none;
+  color: rgb(73, 72, 72);
+  font-weight: 600;
+  margin-left: 10px;
+  margin-top: 50px;
 }
 
 li:hover {
-  background-color: #007c89;
+  color: #007c89;
+  /* color: rgb(255, 255, 255); */
+}
+li:active {
+  color: #007c89;
 }
