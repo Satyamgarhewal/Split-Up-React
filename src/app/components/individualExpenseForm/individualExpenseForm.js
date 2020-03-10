@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ModalComponent from '../modal/modal';
 import individualExpenseForm from './individualExpenseForm.css';
 class IndividualExpenseForm extends Component {
   constructor() {
     super();
     this.state = {
       name: '',
-      amount: ''
+      amount: '',
+      borrow: false
     };
   }
   handleNameChange = e => {
@@ -23,45 +25,49 @@ class IndividualExpenseForm extends Component {
   };
   handleBorrowClick = e => {
     console.log('handle borrow clicked');
+    this.setState({ borrow: true });
   };
   handelOweClick = e => {
     console.log('handle owe click');
   };
   render() {
     return (
-      <div className="formContainer">
-        <form>
-          <input
-            type="text"
-            className="formField "
-            placeholder="Name"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleNameChange}
-          />
-          <input
-            type="text"
-            className="formField"
-            placeholder="Transaction Amount"
-            name="amount"
-            value={this.state.amount}
-            onChange={this.handleMoneyChange}
-          />
-          <input
-            type="button"
-            className="formButton"
-            name="Borrow"
-            value="Borrow"
-            onClick={this.handleBorrowClick}
-          />
-          <input
-            type="button"
-            className="formButton"
-            name="owes"
-            value="Owes"
-            onClick={this.handelOweClick}
-          />
-        </form>
+      <div>
+        {this.state.borrow ? <ModalComponent /> : null}
+        <div className="formContainer">
+          <form>
+            <input
+              type="text"
+              className="formField "
+              placeholder="Name"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleNameChange}
+            />
+            <input
+              type="text"
+              className="formField"
+              placeholder="Transaction Amount"
+              name="amount"
+              value={this.state.amount}
+              onChange={this.handleMoneyChange}
+            />
+            <input
+              type="button"
+              className="formButton"
+              name="Borrow"
+              value="Borrow"
+              onClick={this.handleBorrowClick}
+            />
+            <input
+              type="button"
+              className="formButton"
+              name="owes"
+              value="Owes"
+              onClick={this.handelOweClick}
+            />
+          </form>
+        </div>
       </div>
     );
   }
