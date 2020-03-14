@@ -8,7 +8,7 @@ class IndividualExpenseForm extends Component {
     this.state = {
       name: '',
       amount: '',
-      borrow: false
+      isModalOpen: false
     };
   }
   handleNameChange = e => {
@@ -25,7 +25,12 @@ class IndividualExpenseForm extends Component {
   };
   handleBorrowClick = e => {
     console.log('handle borrow clicked');
-    this.setState({ borrow: true });
+    this.handleCloseModal(true);
+  };
+  handleCloseModal = e => {
+    this.setState({ isModalOpen: e }, () => {
+      console.log(this.state.isModalOpen);
+    });
   };
   handelOweClick = e => {
     console.log('handle owe click');
@@ -33,7 +38,12 @@ class IndividualExpenseForm extends Component {
   render() {
     return (
       <div>
-        {this.state.borrow ? <ModalComponent /> : null}
+        {this.state.isModalOpen ? (
+          <ModalComponent
+            toggle={this.state.isModalOpen}
+            modalControl={this.handleCloseModal}
+          />
+        ) : null}
         <div className="formContainer">
           <form>
             <input

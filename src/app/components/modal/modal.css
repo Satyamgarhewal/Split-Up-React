@@ -1,35 +1,13 @@
-.modal {
-  display: none;
-  position: fixed;
-  overflow: auto;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(0, 0, 0);
-  background-color: rgb(0, 0, 0, 0.4);
+.modalButton {
+  color: white;
+  background-color: #007c89;
+  padding: 8px 16px;
+  border-radius: 5px;
 }
-
-.modalContent {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-.modalClose {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #0000;
-  text-decoration: none;
-  cursor: pointer;
+.modalButton:hover {
+  position: static;
+  border: 1px solid #0d96a5;
+  color: white;
+  background-color: #0d96a5;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
