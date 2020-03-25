@@ -1,23 +1,28 @@
-.expenseFormContainer {
-  float: inline-end;
+.loginFormContainer {
+  border-style: solid black;
+  padding: 8px 12px;
+  display: block;
+  text-align: center;
+  margin-left: 100px;
 }
-
-.expenseFormField {
-  width: 75%;
-  padding: 6px 20px;
+.loginFormField {
+  width: 25%;
+  padding: 6px 8px;
   border-radius: 5px;
   background-color: white;
-  border: 3px solid #007c89;
-  border-style: 3px solid #007c89;
+  border: 4px solid #007c89;
   margin: 5px 7px;
   font-style: oblique;
+  display: block;
+  margin-top: 10px;
 }
-.expenseFormField:hover {
+
+.loginFormField:hover {
   border: 4px solid#0d96a5;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.expenseFormButton {
+.loginFormButton {
   margin-top: 20px;
   background-color: #007c89;
   display: inline-flex;
@@ -28,10 +33,10 @@
   letter-spacing: 1.2px;
   transition: 0.3s;
   margin-left: 15px;
-  margin-right: 104px;
+  float: left;
 }
 
-.expenseFormButton:hover {
+.loginFormButton:hover {
   background-color: #0d96a5;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   border: 1px solid #007c89;

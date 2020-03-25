@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import individual from './individual.css';
 import ExpenseCard from '../../components/expense-card/expensecard';
+import Navbar from '../../components/navbar/navbar';
 import IndividualExpenseForm from '../../components/individualExpenseForm/individualExpenseForm';
 class Individual extends Component {
   constructor() {
@@ -9,7 +10,8 @@ class Individual extends Component {
   }
   render() {
     return (
-      <div className="home">
+      <div>
+        <Navbar />
         <div className="row">
           <div className="col-md-8">
             <ExpenseCard />

@@ -17,24 +17,20 @@ class IndividualExpenseForm extends Component {
   };
   handleMoneyChange = e => {
     const re = /^[0-9\b]+$/;
-    if (e.target.value === '' || re.test(e.target.value)) {
-      this.setState({ amount: e.target.value }, () => {
-        console.log(this.state.amount);
-      });
+    if (
+      e.target.value === '' ||
+      (re.test(e.target.value) && e.target.value.length <= 7)
+    ) {
+      this.setState({ amount: e.target.value });
     }
   };
   handleBorrowClick = e => {
-    console.log('handle borrow clicked');
     this.handleCloseModal(true);
   };
   handleCloseModal = e => {
-    this.setState({ isModalOpen: e }, () => {
-      console.log(this.state.isModalOpen);
-    });
+    this.setState({ isModalOpen: e });
   };
-  handelOweClick = e => {
-    console.log('handle owe click');
-  };
+  handelOweClick = e => {};
   render() {
     return (
       <div>
@@ -44,11 +40,11 @@ class IndividualExpenseForm extends Component {
             modalControl={this.handleCloseModal}
           />
         ) : null}
-        <div className="formContainer">
+        <div className="expenseFormContainer">
           <form>
             <input
               type="text"
-              className="formField "
+              className="expenseFormField "
               placeholder="Name"
               name="name"
               value={this.state.name}
@@ -56,7 +52,7 @@ class IndividualExpenseForm extends Component {
             />
             <input
               type="text"
-              className="formField"
+              className="expenseFormField"
               placeholder="Transaction Amount"
               name="amount"
               value={this.state.amount}
@@ -64,14 +60,14 @@ class IndividualExpenseForm extends Component {
             />
             <input
               type="button"
-              className="formButton"
+              className="expenseFormButton"
               name="Borrow"
               value="Borrow"
               onClick={this.handleBorrowClick}
             />
             <input
               type="button"
-              className="formButton"
+              className="expenseFormButton"
               name="owes"
               value="Owes"
               onClick={this.handelOweClick}

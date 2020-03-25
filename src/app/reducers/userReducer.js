@@ -8,11 +8,13 @@ const userReducer = (state = UserData, action) => {
     case ADD_USER: {
       return {
         ...state,
-        userName: action.payload.userName
+        token: action.payload
       };
     }
     default: {
-      return [...state];
+      return state;
     }
   }
 };
+
+export default userReducer;
