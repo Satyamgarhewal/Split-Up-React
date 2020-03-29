@@ -1,0 +1,21 @@
+.addButton {
+  background-color: #007c89;
+  padding: 1px 16px;
+  border-radius: 30px;
+  color: white;
+  font-style: oblique;
+  font-size: 40px;
+  letter-spacing: 1.2px;
+  transition: 0.3s;
+  float: right;
+  margin-right: 25px;
+  margin-top: 450px;
+  border: 1px solid #007c89;
+  position: relative;
+  margin-bottom: 20px;
+}
+.addButton:hover {
+  background-color: #0d96a5;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid #007c89;
+}

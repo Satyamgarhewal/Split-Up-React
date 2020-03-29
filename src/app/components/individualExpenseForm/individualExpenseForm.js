@@ -1,19 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import SplitUpStrings from '../../utils/splitUpStrings';
 import ModalComponent from '../modal/modal';
 import individualExpenseForm from './individualExpenseForm.css';
+const { FIELD_EMPTY_ERROR } = SplitUpStrings;
+
 class IndividualExpenseForm extends Component {
   constructor() {
     super();
     this.state = {
       name: '',
       amount: '',
-      isModalOpen: false
+      mobile: '',
+      isModalOpen: false,
+      isNameFieldEmpty: false,
+      isMobileFieldEmpty: false,
+      isAmountFieldEmpty: false
     };
   }
   handleNameChange = e => {
     const name = e.target.value;
-    this.setState({ name });
+    this.setState({ name }, () => {
+      if (this.state.name !== '') {
+        this.setState({ isNameFieldEmpty: false });
+      }
+    });
+  };
+  handleMobileChange = e => {
+    const re = /^[0-9\b]+$/;
+    if (
+      e.target.value === '' ||
+      (re.test(e.target.value) && e.target.value.length <= 10)
+    ) {
+      this.setState({ mobile: e.target.value }, () => {
+        if (this.state.mobile !== '') {
+          this.setState({ isMobileFieldEmpty: false });
+        }
+      });
+    }
   };
   handleMoneyChange = e => {
     const re = /^[0-9\b]+$/;
@@ -21,11 +45,23 @@ class IndividualExpenseForm extends Component {
       e.target.value === '' ||
       (re.test(e.target.value) && e.target.value.length <= 7)
     ) {
-      this.setState({ amount: e.target.value });
+      this.setState({ amount: e.target.value }, () => {
+        if (this.state.amount !== '') {
+          this.setState({ isAmountFieldEmpty: false });
+        }
+      });
     }
   };
   handleBorrowClick = e => {
-    this.handleCloseModal(true);
+    if (this.state.name === '') {
+      this.setState({ isNameFieldEmpty: true });
+    }
+    if (this.state.mobile === '') {
+      this.setState({ isMobileFieldEmpty: true });
+    }
+    if (this.state.amount === '') {
+      this.setState({ isAmountFieldEmpty: true });
+    }
   };
   handleCloseModal = e => {
     this.setState({ isModalOpen: e });
@@ -50,6 +86,21 @@ class IndividualExpenseForm extends Component {
               value={this.state.name}
               onChange={this.handleNameChange}
             />
+            {this.state.isNameFieldEmpty ? (
+              <p className="expenseFormFieldEmptyError">{FIELD_EMPTY_ERROR}</p>
+            ) : null}
+            <input
+              type="text"
+              className="expenseFormField "
+              placeholder="Mobile number"
+              name="mobile"
+              value={this.state.mobile}
+              onChange={this.handleMobileChange}
+            />
+            {this.state.isMobileFieldEmpty ? (
+              <p className="expenseFormFieldEmptyError">{FIELD_EMPTY_ERROR}</p>
+            ) : null}
+
             <input
               type="text"
               className="expenseFormField"
@@ -58,6 +109,10 @@ class IndividualExpenseForm extends Component {
               value={this.state.amount}
               onChange={this.handleMoneyChange}
             />
+            {this.state.isAmountFieldEmpty ? (
+              <p className="expenseFormFieldEmptyError">{FIELD_EMPTY_ERROR}</p>
+            ) : null}
+
             <input
               type="button"
               className="expenseFormButton"
