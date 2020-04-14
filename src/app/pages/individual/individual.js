@@ -1,12 +1,18 @@
+// libraries
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SplitUpStrings from '../../utils/splitUpStrings';
-import individual from './individual.css';
-import ExpenseCard from '../../components/expense-card/expensecard';
+
+// components
 import Navbar from '../../components/navbar/navbar';
 import AddButton from '../../components/addGroupButton/addButton';
 import IndividualExpenseForm from '../../components/individualExpenseForm/individualExpenseForm';
 import ModalComponent from '../../components/modal/modal';
+import IndividualExpenseCard from '../../components/individualExpense-card/IndividualExpenseCard';
+// css
+import individual from './individual.css';
+
+// utils
+import SplitUpStrings from '../../utils/splitUpStrings';
 
 const { INDIVIDUAL } = SplitUpStrings;
 class Individual extends Component {
@@ -14,16 +20,17 @@ class Individual extends Component {
     super();
     this.state = {
       pageName: INDIVIDUAL,
-      isClicked: false
+      isClicked: false,
     };
   }
-  handleAddButton = e => {
+  handleAddButton = (e) => {
     this.setState({ isClicked: true });
   };
-  handleCloseModal = e => {
+  handleCloseModal = (e) => {
     this.setState({ isClicked: e });
   };
   render() {
+    const individualExpenseData = this.props.individualExpense;
     return (
       <div>
         {this.state.isClicked ? (
@@ -34,20 +41,24 @@ class Individual extends Component {
           />
         ) : null}
         <Navbar />
-        <div className="row">
-          <div className="col-md-10">
-            <ExpenseCard />
-          </div>
-          <div className="col-md-2">
-            <AddButton
-              pageName={this.state.pageName}
-              handleAddClick={this.handleAddButton}
-            />
-          </div>
-        </div>
+        {individualExpenseData.expenseName ? (
+          <IndividualExpenseCard
+            pageName={INDIVIDUAL}
+            expenseName={individualExpenseData.expenseName}
+          />
+        ) : null}
+        <AddButton
+          pageName={this.state.pageName}
+          handleAddClick={this.handleAddButton}
+        />
       </div>
     );
   }
 }
 
-export default connect()(Individual);
+const mapStateToProps = (state) => {
+  return {
+    individualExpense: state.individualExpense,
+  };
+};
+export default connect(mapStateToProps)(Individual);

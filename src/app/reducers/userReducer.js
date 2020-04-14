@@ -1,14 +1,15 @@
-import userConstants from '../utils/constants';
-import stateConstants from '../utils/stateConstants';
-const { ADD_USER } = userConstants;
-const UserData = stateConstants;
+import { USER_CONSTANTS } from '../store/storeConstants';
+const { SET_USER_DATA } = USER_CONSTANTS;
 
-const userReducer = (state = UserData, action) => {
+const USER_DATA = {
+  userName: '',
+};
+const userReducer = (state = USER_DATA, action) => {
   switch (action.type) {
-    case ADD_USER: {
+    case SET_USER_DATA: {
       return {
         ...state,
-        token: action.payload
+        token: action.payload,
       };
     }
     default: {

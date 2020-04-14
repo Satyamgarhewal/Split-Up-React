@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import SplitUpStrings from '../../utils/splitUpStrings';
 import ModalComponent from '../modal/modal';
 import individualExpenseForm from './individualExpenseForm.css';
+import { bindActionCreators } from 'redux';
+import { addExpense } from '../../actions/individualExpenseAction';
 const { FIELD_EMPTY_ERROR } = SplitUpStrings;
 
 class IndividualExpenseForm extends Component {
@@ -62,11 +64,48 @@ class IndividualExpenseForm extends Component {
     if (this.state.amount === '') {
       this.setState({ isAmountFieldEmpty: true });
     }
+    if (
+      this.state.name !== '' &&
+      this.state.mobile !== '' &&
+      this.state.amount !== ''
+    ) {
+      const userData = {
+        name: this.state.name,
+        mobile: this.state.mobile,
+        amount: this.state.amount,
+        activity: 'Borrows'
+      };
+      this.props.addExpense(userData);
+    }
+  };
+
+  handelOweClick = e => {
+    if (this.state.name === '') {
+      this.setState({ isNameFieldEmpty: true });
+    }
+    if (this.state.mobile === '') {
+      this.setState({ isMobileFieldEmpty: true });
+    }
+    if (this.state.amount === '') {
+      this.setState({ isAmountFieldEmpty: true });
+    }
+    if (
+      this.state.name !== '' &&
+      this.state.mobile !== '' &&
+      this.state.amount !== ''
+    ) {
+      const userData = {
+        name: this.state.name,
+        mobile: this.state.mobile,
+        amount: this.state.amount,
+        activity: 'Owes'
+      };
+      this.props.addExpense(userData);
+    }
   };
   handleCloseModal = e => {
     this.setState({ isModalOpen: e });
   };
-  handelOweClick = e => {};
   render() {
     return (
       <div>
@@ -134,4 +173,9 @@ class IndividualExpenseForm extends Component {
   }
 }
 
-export default connect()(IndividualExpenseForm);
+const mapDispatchToProps = dispatch => {
+  return {
+    addExpense: bindActionCreators(addExpense, dispatch)
+  };
+};
+export default connect(null, mapDispatchToProps)(IndividualExpenseForm);

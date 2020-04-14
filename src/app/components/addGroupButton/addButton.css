@@ -7,12 +7,12 @@
   font-size: 40px;
   letter-spacing: 1.2px;
   transition: 0.3s;
-  float: right;
-  margin-right: 25px;
-  margin-top: 450px;
   border: 1px solid #007c89;
-  position: relative;
+  position: absolute;
+  right: 0;
+  bottom: 0;
   margin-bottom: 20px;
+  margin-right: 20px;
 }
 .addButton:hover {
   background-color: #0d96a5;

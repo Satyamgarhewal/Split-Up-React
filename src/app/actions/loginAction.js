@@ -1,23 +1,23 @@
 import axios from 'axios';
-import userConstants from '../utils/constants';
-const { ADD_USER } = userConstants;
-export const setRegisterUser = response => {
+import { USER_CONSTANTS } from '../store/storeConstants';
+const { SET_USER_DATA } = USER_CONSTANTS;
+export const setRegisterUser = (response) => {
   return {
-    type: ADD_USER,
-    payload: response
+    type: SET_USER_DATA,
+    payload: response,
   };
 };
-export const registerUser = formData => {
-  return dispatch => {
+export const registerUser = (formData) => {
+  return (dispatch) => {
     axios
       .post(
         'https://cors-anywhere.herokuapp.com/http://localhost:3010/register',
         formData
       )
-      .then(response => {
+      .then((response) => {
         dispatch(setRegisterUser(response));
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };

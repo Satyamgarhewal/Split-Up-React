@@ -7,19 +7,21 @@ import GroupExpenseForm from '../groupExpenseForm/groupExpenseForm';
 const { INDIVIDUAL, GROUP } = SplitUpStrings;
 function ModalComponent(props) {
   const { toggle, modalControl } = props;
-  function handleClose() {
+  function handleClose(modalClose, fieldValue) {
     if (props.modalControl) {
       modalControl(false);
+    } else if (fieldValue && fieldValue === 'closePopup') {
+      modalControl(modalClose);
     }
   }
 
   return (
     <div>
-      <Modal isOpen={toggle}>
+      <Modal className="modalEffect" isOpen={toggle}>
         <div className="offset-md-1">
           <button
             type="button"
-            className="close"
+            className="modalCloseButton"
             aria-label="Close"
             onClick={handleClose}
           >
@@ -31,7 +33,9 @@ function ModalComponent(props) {
         </ModalHeader>
         <ModalBody>
           {props.pageName === INDIVIDUAL ? <IndividualExpenseForm /> : null}
-          {props.pageName === GROUP ? <GroupExpenseForm /> : null}
+          {props.pageName === GROUP ? (
+            <GroupExpenseForm handleModalClose={handleClose} />
+          ) : null}
         </ModalBody>
         <ModalFooter></ModalFooter>
       </Modal>

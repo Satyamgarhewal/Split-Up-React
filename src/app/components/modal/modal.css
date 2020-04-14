@@ -1,20 +1,21 @@
+.modalEffect {
+  transition: background-color 1s ease-in;
+}
 .modalHeader {
   color: #666666;
   font-style: oblique;
 }
 .modalCloseButton {
-  background-color: rgb(94, 94, 94);
+  background-color: rgb(255, 255, 255);
   padding: 1px 16px;
-  border-radius: 30px;
-  color: white;
+  color: black;
   font-style: oblique;
-  font-size: 40px;
+  font-size: 20px;
   letter-spacing: 1.2px;
   transition: 0.3s;
   float: right;
-  border: 1px solid #007c89;
+  border: 1px solid white;
   position: relative;
-  margin-bottom: 20px;
 }
 .modalButton {
   color: white;

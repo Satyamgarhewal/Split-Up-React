@@ -1,0 +1,65 @@
+.groupCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 230px;
+  height: 310px;
+  margin-left: 20px;
+  border-radius: 10px;
+}
+.groupCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.groupHeading {
+  font-size: 22px;
+  font-style: oblique;
+  color: #007c89;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 500;
+}
+.groupContainer {
+  padding: 2px 16px;
+  margin-top: 20px;
+}
+.totalAmountBorder {
+  border: 1.5px solid rgb(139, 139, 139, 0.3);
+  width: 100%;
+  align: bottom;
+}
+.groupMemberHeading {
+  font-size: 16px;
+  font-style: oblique;
+  color: #007c89;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.totalAmountHeading {
+  font-size: 16px;
+  font-style: oblique;
+  color: #007c89;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.addDetailsButton {
+  margin-top: 10px;
+  background-color: #007c89;
+  display: inline-flex;
+  padding: 6px 18px;
+  border-radius: 5px;
+  color: white;
+  font-style: oblique;
+  letter-spacing: 1.2px;
+  transition: 0.3s;
+  margin-left: 30px;
+  position: relative;
+}
+
+.addDetailsButton:hover {
+  background-color: #0d96a5;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid #007c89;
+}

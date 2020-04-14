@@ -6,7 +6,9 @@ ul {
   overflow: hidden;
   padding-bottom: 30px;
   border-bottom: 2px solid rgb(97, 94, 94);
-  background-color: #fbeeca;
+  background-color: #f77c36;
+  transition: top 0.6s;
+  overflow: hidden;
 }
 
 ul:hover {

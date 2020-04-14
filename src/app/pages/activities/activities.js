@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Navbar from '../../components/navbar/navbar';
 class Activities extends Component {
   constructor() {
     super();
   }
   render() {
-    return <div>This is an Activities page</div>;
+    return (
+      <div>
+        <Navbar />
+      </div>
+    );
   }
 }
 
