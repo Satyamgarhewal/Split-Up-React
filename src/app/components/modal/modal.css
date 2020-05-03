@@ -4,6 +4,7 @@
 .modalHeader {
   color: #666666;
   font-style: oblique;
+  font-size: 30px;
 }
 .modalCloseButton {
   background-color: rgb(255, 255, 255);

@@ -1,10 +1,25 @@
+// libraries
 import React from 'react';
-import modal from './modal.css';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
+// components
 import SplitUpStrings from '../../utils/splitUpStrings';
 import IndividualExpenseForm from '../individualExpenseForm/individualExpenseForm';
 import GroupExpenseForm from '../groupExpenseForm/groupExpenseForm';
-const { INDIVIDUAL, GROUP } = SplitUpStrings;
+import GroupDetailForm from '../../components/groupDetailsForm/groupDetailsForm';
+// css
+import modal from './modal.css';
+
+// utils
+const {
+  INDIVIDUAL,
+  GROUP,
+  ADD_DETAILS_MODAL,
+  ADD_EXPENSE,
+  CREATE_GROUP,
+  ADD_GROUP_MEMBERS,
+} = SplitUpStrings;
+
 function ModalComponent(props) {
   const { toggle, modalControl } = props;
   function handleClose(modalClose, fieldValue) {
@@ -29,12 +44,17 @@ function ModalComponent(props) {
           </button>
         </div>
         <ModalHeader className="modalHeader">
-          {props.pageName === INDIVIDUAL ? 'Add an expense' : 'Create a group'}
+          {props.pageName === INDIVIDUAL ? { ADD_EXPENSE } : null}
+          {props.pageName === GROUP ? CREATE_GROUP : null}
+          {props.pageName === ADD_DETAILS_MODAL ? ADD_GROUP_MEMBERS : null}
         </ModalHeader>
         <ModalBody>
           {props.pageName === INDIVIDUAL ? <IndividualExpenseForm /> : null}
           {props.pageName === GROUP ? (
             <GroupExpenseForm handleModalClose={handleClose} />
+          ) : null}
+          {props.pageName === ADD_DETAILS_MODAL ? (
+            <GroupDetailForm handleModalClose={handleClose} />
           ) : null}
         </ModalBody>
         <ModalFooter></ModalFooter>

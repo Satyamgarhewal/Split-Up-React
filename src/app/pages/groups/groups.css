@@ -6,3 +6,15 @@
   padding-top: 20px;
   margin: 0 auto;
 }
+
+@media only screen and (max-width: 400px) {
+  .noRecordFound {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 401px) and (max-width: 800px) {
+  .noRecordFound {
+    font-size: 18px;
+  }
+}

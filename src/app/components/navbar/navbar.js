@@ -10,17 +10,17 @@ const {
 function Navbar() {
   return (
     <div>
-      <ul>
+      <ul className="navbarContainer">
         <Link to="/individual">
-          <li>{MENU_STRING_INDIVIDUAL}</li>
+          <li className="navbarList">{MENU_STRING_INDIVIDUAL}</li>
         </Link>
 
         <Link to="/groups">
-          <li>{MENU_STRING_GROUPS}</li>
+          <li className="navbarList">{MENU_STRING_GROUPS}</li>
         </Link>
 
         <Link to="/activities">
-          <li>{MENU_STRING_ACTIVITIES}</li>
+          <li className="navbarList">{MENU_STRING_ACTIVITIES}</li>
         </Link>
       </ul>
     </div>

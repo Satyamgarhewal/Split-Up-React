@@ -1,22 +1,19 @@
-.groupformcontainer {
-  float: inline-end;
-}
-
-.groupFormField {
+.groupDetailFormField {
   width: 95%;
   padding: 6px 20px;
   border-radius: 5px;
   background-color: white;
   border: 3px solid #007c89;
+  border-style: 3px solid #007c89;
   margin: 5px 7px;
   font-style: oblique;
 }
-.groupFormField:hover {
+.groupDetailFormField:hover {
   border: 4px solid#0d96a5;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.groupFormButton {
+.groupDetailFormButton {
   background-color: #007c89;
   display: inline-flex;
   padding: 8px 24px;
@@ -27,35 +24,28 @@
   transition: 0.3s;
   margin: 20px 0px 0px 10px;
 }
-
-.groupFormButton:hover {
-  background-color: #0d96a5;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  border: 1px solid #007c89;
-}
-
-.groupformEmptyField {
+.groupDetailformEmptyField {
   color: red;
   font-size: 12px;
   margin: 0px 0px 0px 10px;
 }
 
 @media only screen and (max-width: 400px) {
-  .groupFormField {
+  .groupDetailFormField {
     padding: 2px 20px;
     border: 2px solid #007c89;
   }
-  .groupFormButton {
+  .groupDetailFormButton {
     margin: 10px 0px 0px 8px;
     padding: 6px 16px;
   }
 }
 
 @media only screen and (min-width: 401px) and (max-width: 800px) {
-  .groupFormField {
+  .groupDetailFormField {
     padding: 4px 20px;
   }
-  .groupFormButton {
+  .groupDetailFormButton {
     margin: 10px 0px 0px 8px;
     padding: 8px 20px;
   }

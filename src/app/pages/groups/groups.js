@@ -12,7 +12,7 @@ import GroupExpenseCard from '../../components/groupExpenseCard/groupExpenseCard
 import groups from './groups.css';
 
 // utils
-const { GROUP, NO_RECORDS_FOUND } = SplitUpStrings;
+const { GROUP, NO_RECORDS_FOUND, ADD_DETAILS_MODAL } = SplitUpStrings;
 
 class Group extends Component {
   constructor() {
@@ -20,13 +20,18 @@ class Group extends Component {
     this.state = {
       pageName: GROUP,
       isClicked: false,
+      isAddDetailModalOpen: false,
+      modalName: ADD_DETAILS_MODAL,
     };
   }
   handleAddButton = () => {
     this.setState({ isClicked: true });
   };
+  handleAddDetailsModal = (value) => {
+    this.setState({ isAddDetailModalOpen: value });
+  };
   handleCloseModal = () => {
-    this.setState({ isClicked: false });
+    this.setState({ isClicked: false, isAddDetailModalOpen: false });
   };
   render() {
     const groupData = this.props.groupData;
@@ -39,6 +44,13 @@ class Group extends Component {
             pageName={this.state.pageName}
           />
         ) : null}
+        {this.state.isAddDetailModalOpen ? (
+          <ModalComponent
+            toggle={this.state.isAddDetailModalOpen}
+            modalControl={this.handleCloseModal}
+            pageName={this.state.modalName}
+          />
+        ) : null}
         <Navbar />
         {!groupData.groupName ? (
           <p className="noRecordFound">{NO_RECORDS_FOUND}</p>
@@ -47,8 +59,10 @@ class Group extends Component {
           <GroupExpenseCard
             expenseName={groupData.groupName}
             expenseMembers={groupData.groupMembers}
+            memberDetails={groupData.memberDetails}
             pageName={GROUP}
             totalAmount={groupData.totalAmount}
+            addDetailModal={this.handleAddDetailsModal}
           />
         ) : null}
         <AddButton
